@@ -42,14 +42,65 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-background="img/stst.plain.svg">
+				<section data-background="img/stst-bg-nobg.plain.svg">
+				</section>
+
+                <section data-transition="fade">
+					<p>
+						<a href="http://stuckistucki.com"><img src="img/stst-logo-w.plain.svg" alt="Stucki &amp; Stucki" width="70%"/></a>
+					</p>
+					<p>
+						<a href="http://stuckistucki.com">Philipp Stucki</a> / <a href="http://twitter.com/_phst">@_phst</a>
+					</p>
+				</section>
+
+                <section>
+                    <h1>jsDay 2014</h1>
+                    <h2>Web Audio API</h2>
+				</section>
+
+                <section>
+                    <h1>jsDay 2014</h1>
+                    <h2>Example: JS1k</h2>
+				</section>
+
+                <section>
+                    <h1>jsDay 2014</h1>
+                    <h2><q>Which library did you use?</q></h2>
+				</section>
+
+                <section>
+                    <h1>JS1k</h1>
+                    <h2><em>No</em> libraries used</h2>
+				</section>
+
+                <section>
+                    <h1>JS1k</h1>
+                    <h2><q>The JavaScript code golfing competition</q></h2>
+				</section>
+
+                <section>
+                    <h1>JS1k</h1>
+                    <ul>
+                        <li class="fragment">Max. 1024 bytes of JavaScript</li>
+                        <li class="fragment">Shim is provided</li>
+                        <li class="fragment">No WebGL</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h2>1024 bytes</h2>
+					<pre>js1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1kjs1k</pre>
+				</section>
+
+                <section>
+                    <h1>Title</h1>
+                    <h2>Subtitle</h2>
+					<p></p>
 				</section>
 
                 <section>
                     <h1>Questions?</h1>
-					<p>
-						<small><a href="http://stuckistucki.com">Philipp Stucki</a> / <a href="http://twitter.com/_phst">@_phst</a></small>
-					</p>
 				</section>
 
 			</div>
@@ -69,13 +120,8 @@
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: 'default',
 				backgroundTransition: 'fade',
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
