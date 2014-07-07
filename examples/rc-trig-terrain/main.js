@@ -34,9 +34,9 @@ render = function(t, fps) {
     var f=1,imin=0.1;imax=30,di=0.45;
     var x,y,d,b,fy=0,qd=8,qs=4,qh;
     var o={
-        x:8,
-        y:8,
-        z:2+t/5
+        x:0,
+        y:3,
+        z:-15+t/5
     }
 
     for (y = 0; y < vh; y+=1) {
@@ -53,8 +53,9 @@ render = function(t, fps) {
                 }
 
                 ct = t/30;
-                fy = Math.sin(p.x/1.4);
-                fy += Math.cos(p.z/1.4);
+                //fy = Math.sin(p.x/1.4);
+                //fy += Math.cos(p.z/1.4);
+                fy = Math.sin(Math.sqrt(p.x*p.x+p.z*p.z));
                 fy = (fy+2)/3;
 
 
