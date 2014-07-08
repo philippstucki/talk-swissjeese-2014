@@ -193,7 +193,11 @@ function init()
 	gui.add( parameters, 'resetCam' ).name("Reset Camera");
 	gui.add( parameters, 'graphFunc' ).name("Graph Function");	
 
-	preset_plane();
+    if (window.location.hash) {
+        eval('preset_' + window.location.hash.substr(1) + '()');
+    } else {
+        preset_plane();
+    }
 }
 
 function createGraph()
