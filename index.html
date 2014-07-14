@@ -60,9 +60,10 @@
 				</section>
 
                 <section>
-                    <h1>jsDay 2014</h1>
-                    <h2><a href="examples/js1k2014/index.html" target="_blank">Example: JS1k 2014</a></h2>
+                    <h2>JS1k 2014</h2>
+                    <a href="examples/js1k2014/index.html" target="_blank"><img src="img/js1k14.png" alt="js1k 2014"/></a>
 				</section>
+
 
                 <section>
                     <h1>jsDay 2014</h1>
@@ -71,12 +72,11 @@
 
                 <section>
                     <h1>JS1k</h1>
-                    <h2><em>No</em> libraries used</h2>
+                    <h2><em>No</em> Libraries Used</h2>
 				</section>
 
                 <section>
-                    <h1>JS1k</h1>
-                    <h2>?</h2>
+                    <h1>JS1k ?</h1>
 				</section>
 
                 <section>
@@ -84,7 +84,7 @@
 				</section>
 
                 <section>
-                    <h1>Some Rules</h1>
+                    <h1>Rules</h1>
                     <ul>
                         <li class="fragment">Max. 1024 bytes of JavaScript</li>
                         <li class="fragment">Shim is provided</li>
@@ -99,18 +99,11 @@
 
                 <section>
                     <h1>Why?</h1>
-				</section>
-
-                <section>
-                    <h2>Constraints pose a challenge</h2>
-				</section>
-
-                <section>
-                    <h2>Explore the language</h2>
-				</section>
-
-                <section>
-                    <h2>Get creative</h2>
+                    <ul>
+                        <li class="fragment">Constraints pose a challenge</li>
+                        <li class="fragment">Explore JS</li>
+                        <li class="fragment">Learn new techniques</li>
+                    </ul>
 				</section>
 
                 <section>
@@ -124,8 +117,7 @@
 				</section>
 
                 <section>
-                    <h1>Graphics</h1>
-                    <h2>Ray Casting</h2>
+                    <h1>Ray Marching</h1>
 				</section>
 
                 <section>
@@ -148,7 +140,7 @@
 				</section>
 
                 <section>
-                    <h1><a href="examples/3dplot/index.html#sine" target="_blank">Sine</a></h1>
+                    <h1><a href="examples/3dplot/index.html#sine" target="_blank">Sine Waves</a></h1>
                     <h2>f (x,y) = <em>a</em>∙sin(x)</h2>
                     <h3><em>a</em> ∈ ℝ</h3>
 				</section>
@@ -167,15 +159,103 @@
                 <section>
                     <h2>Ray Marching a Terrain</h2>
                     <ol>
-                        <li class="fragment">Start ray at POV</li>
-                        <li class="fragment">Step along ray until terrain is hit</li>
+                        <li class="fragment">Start ray at point of view (POV)</li>
+                        <li class="fragment">Follow ray in fixed steps until terrain is hit</li>
                         <li class="fragment">Render pixel on virtual plane</li>
+                        <li class="fragment">Abort after predefined number of steps</li>
                     </ol>
 				</section>
 
                 <section>
                     <h2>Ray Marching a Terrain</h2>
                     <img src="img/raymarcher.svg" alt="terrain ray marching" width="100%"/>
+				</section>
+
+                <section>
+                    <a href="examples/rc-trig-terrain/index.html" target="_blank"><img src="img/trigterrain.png" alt="trig. terrain"/></a>
+				</section>
+
+                <section>
+                    <h2>Outer Loop</h2>
+                    <pre>
+                        <code data-trim class="no-highlight">
+for (y = 0; y < height; y++) {
+    for (x = 0; x &lt; width; x++) {
+        // 1) march ray for (x,y)
+        // 2) render pixel at (x,y)
+    }
+}
+                        </code>
+                    </pre>
+				</section>
+
+                <section>
+                    <h2>Marching a Ray</h2>
+                    <pre>
+                        <code data-trim class="no-highlight">
+brightness = -1;
+for (i=imin; i&lt;imax; i+=stepsize) {
+    p = (…) // calculate p.x, p.y, p.z
+    fz = f(p.x,p.y); // get terrain height at (p.x, p.y)
+    if (fz &gt; p.z) {
+        brightness = fz*250|0;
+        break;
+    }
+}
+// paint pixel at (x,y);
+                        </code>
+                    </pre>
+				</section>
+
+                <section>
+                    <h2>Painting a Pixel</h2>
+                    <pre>
+                        <code data-trim class="no-highlight">
+function pp(x, y, brightness) {
+    c.fillStyle = 'rgb(0,'+(brightness==-1?0:brightness)+',0)';
+    c.fillRect(x*pixelSizeX, y*pixelSizeY, pixelSizeX, pixelSizeY);
+}
+                        </code>
+                    </pre>
+				</section>
+
+                <section>
+                    <h2>Perlin Noise</h2>
+                    <img src="img/terrain-perlin-iq.jpg" width="70%"/>
+                    <p>Image: <a href="http://www.iquilezles.org/">iñigo quilez (iq)</a></p>
+				</section>
+
+                <section>
+                    <h2>Distance Field</h2>
+                    <img src="img/js1k14.png"/>
+				</section>
+
+                <section>
+                    <h2>Ray Marching a Distance Field</h2>
+                    <img src="img/raymarcher-dfe.svg"/>
+				</section>
+
+                <section>
+                    <h2>Distance Estimator (DE)</h2>
+                    <ul>
+                        <li class="fragment">A DE is a function</li>
+                        <li class="fragment">A DE returns the distance to an object</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h2>DE in ℝ<sup>2</sup></h2>
+                    <img src="img/de-sphere-s1.svg" width="60%"/>
+				</section>
+
+                <section>
+                    <h2>DE in ℝ<sup>2</sup></h2>
+                    <img src="img/de-sphere-s2.svg" width="60%"/>
+				</section>
+
+                <section>
+                    <h2>DE in ℝ<sup>2</sup></h2>
+                    <h3>d = Math.sqrt(x^2 + y^2) - r;</h3>
 				</section>
 
                 <section>

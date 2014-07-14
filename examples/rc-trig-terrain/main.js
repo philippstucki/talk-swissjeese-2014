@@ -35,8 +35,8 @@ render = function(t, fps) {
     var x,y,d,b,fy=0,qd=8,qs=4,qh;
     var o={
         x:0,
-        y:3,
-        z:-15+t/5
+        y:5,
+        z:-15+t/2
     }
 
     for (y = 0; y < vh; y+=1) {
@@ -52,15 +52,11 @@ render = function(t, fps) {
                     z:o.z+i*d.z,
                 }
 
-                ct = t/30;
-                //fy = Math.sin(p.x/1.4);
-                //fy += Math.cos(p.z/1.4);
-                fy = Math.sin(Math.sqrt(p.x*p.x+p.z*p.z));
-                fy = (fy+2)/3;
-
+                fy = Math.sin(p.x*2)+Math.cos(p.z*1);
+                fy = (fy+2)/4;
 
                 if (p.y < fy) {
-                    b=fy*250|0;
+                    b=fy*240|0;
                     break;
                 }
             }
@@ -70,7 +66,7 @@ render = function(t, fps) {
     }
 }
 
-// add event listener to bind fun2tion keys
+// add event listener to bind function keys
 document.addEventListener('keydown', function(e) {
     run = e.keyCode==32 ? run*-1 : run*1;
 });

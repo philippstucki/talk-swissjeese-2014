@@ -99,6 +99,7 @@ function init()
 	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
 	// CONTROLS
 	controls = new THREE.TrackballControls( camera, renderer.domElement );
+    controls.staticMoving = true;
 	// STATS
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
