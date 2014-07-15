@@ -158,8 +158,12 @@ body {
 
 .reveal pre {
   font-family: 'Fira Mono', monospace;
-  font-size: 0.6em;
+  font-size: 1em;
   line-height: 1.6; }
+
+.reveal pre.small {
+  font-size: 0.6em;
+}
 
 .reveal q {
   quotes: '“' '”'; }
