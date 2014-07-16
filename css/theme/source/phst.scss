@@ -4,13 +4,49 @@
 // ---------------------------------------------
 
 // Include theme-specific fonts
-@import url(http://fonts.googleapis.com/css?family=Fira+Sans:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Fira+Mono:400,700);
+
+@font-face {
+  font-family: 'Fira Sans Web';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/FiraSans-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Fira Sans Web';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/FiraSans-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Fira Sans Web';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../../fonts/FiraSans-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Fira Sans Web';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../../fonts/FiraSans-BoldItalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Mono Web';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/FiraMono-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Fira Mono Web';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/FiraMono-Bold.woff) format('woff');
+}
 
 // Override theme settings (see ../template/settings.scss)
-$mainFont: 'Fira Sans', sans-serif;
+$mainFont: 'Fira Sans Web', sans-serif;
 $mainColor: #fff;
-$headingFont: 'Fira Sans', sans-serif;
+$headingFont: 'Fira Sans Web', sans-serif;
 $headingColor: #fff;
 $headingTextShadow: none;
 $headingTextTransform: none;
@@ -54,7 +90,7 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 }
 
 .reveal pre {
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Mono Web', monospace;
     font-size: 0.6em;
     line-height: 1.6;
 }
