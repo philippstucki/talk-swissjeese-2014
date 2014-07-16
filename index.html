@@ -92,7 +92,7 @@
                     <h1>Rules</h1>
                     <ul>
                         <li>Max. 1024 bytes of JavaScript</li>
-                        <li>Shim is provided</li>
+                        <li>Template is provided</li>
                         <li>No WebGL</li>
                     </ul>
 				</section>
@@ -121,12 +121,19 @@
 				</section>
 
                 <section>
-                    <h1>Ray Marching</h1>
+                    <h1>How?</h1>
 				</section>
 
                 <section>
-                    <h1>ℝ→ℝ</h1>
+                    <h1>Ray Marching</h1>
+                    <h2>1) Terrains</h2>
+                    <h2>2) Distance Fields</h2>
+				</section>
+
+                <section>
                     <h2>Functions in 1D</h2>
+                    <h2>ℝ→ℝ</h2>
+                    <h2>f(x) = ...</h2>
 				</section>
 
                 <section>
@@ -134,8 +141,9 @@
 				</section>
 
                 <section>
-                    <h1>ℝ<sup>2</sup>→ℝ</h1>
                     <h2>Functions in 2D</h2>
+                    <h2>ℝ<sup>2</sup>→ℝ</h2>
+                    <h2>f(x,y) = ...</h2>
 				</section>
 
                 <section>
@@ -156,18 +164,12 @@
 				</section>
 
                 <section>
-                    <h1><a href="examples/3dplot/index.html#trigterrain" target="_blank">Trigonometric Land</a></h1>
-                    <h2>f (x,y) = (...)</h2>
+                    <h1><a href="examples/3dplot/index.html#trigterrain" target="_blank">Trigonometric City</a></h1>
+                    <h2>f (x,y) = <br/>sin(cos(x)+y)<br/>+cos((x-5)/2∙sin((y-5)/2))</h2>
 				</section>
 
                 <section>
                     <h2>Ray Marching a Terrain</h2>
-                    <ol>
-                        <li class="fragment">Start ray at point of view (POV)</li>
-                        <li class="fragment">Follow ray in fixed steps until terrain is hit</li>
-                        <li class="fragment">Render pixel on virtual plane</li>
-                        <li class="fragment">Abort after predefined number of steps</li>
-                    </ol>
 				</section>
 
                 <section>
@@ -176,67 +178,92 @@
 				</section>
 
                 <section>
+                    <h2>Terrain is hit if <br/>f(x,y) > p.z</h2>
+				</section>
+
+                <section>
+                    <h2>Color of Pixel is Proportional to Terrain Height</h2>
+				</section>
+
+                <section>
+                    <h2>Ray Marching a Terrain</h2>
+                    <img src="img/raymarcher.svg" alt="terrain ray marching" width="100%"/>
+				</section>
+
+                <!--<section>-->
+                    <!--<h2>Ray Marching a Terrain</h2>-->
+                    <!--<ol>-->
+                        <!--<li>Start ray at point of view (POV)</li>-->
+                        <!--<li>Follow ray in fixed steps until terrain is hit</li>-->
+                        <!--<li>Render pixel on virtual plane</li>-->
+                    <!--</ol>-->
+				<!--</section>-->
+
+                <section>
                     <a href="examples/rc-trig-terrain/index.html" target="_blank"><img src="img/trigterrain.png" alt="trig. terrain"/></a>
 				</section>
 
-                <section>
-                    <h2>Outer Loop</h2>
-                    <pre>
-                        <code data-trim class="no-highlight">
-for (y = 0; y < height; y++) {
-    for (x = 0; x &lt; width; x++) {
-        // 1) march ray for (x,y)
-        // 2) render pixel at (x,y)
-    }
-}
-                        </code>
-                    </pre>
-				</section>
+                <!--<section>-->
+                    <!--<h2>Outer Loop</h2>-->
+                    <!--<pre>-->
+                        <!--<code data-trim class="no-highlight">-->
+<!--for (y = 0; y < height; y++) {-->
+    <!--for (x = 0; x &lt; width; x++) {-->
+        <!--// 1) march ray for (x,y)-->
+        <!--// 2) render pixel at (x,y)-->
+    <!--}-->
+<!--}-->
+                        <!--</code>-->
+                    <!--</pre>-->
+				<!--</section>-->
+
+                <!--<section>-->
+                    <!--<h2>Marching a Ray</h2>-->
+                    <!--<pre>-->
+                        <!--<code data-trim class="no-highlight">-->
+<!--brightness = -1;-->
+<!--for (i=imin; i&lt;imax; i+=stepsize) {-->
+    <!--p = (…) // calculate p.x, p.y, p.z-->
+    <!--fz = f(p.x,p.y); // get terrain height at (p.x, p.y)-->
+    <!--if (fz &gt; p.z) {-->
+        <!--brightness = fz*250|0;-->
+        <!--break;-->
+    <!--}-->
+<!--}-->
+<!--// paint pixel at (x,y);-->
+                        <!--</code>-->
+                    <!--</pre>-->
+				<!--</section>-->
+
+                <!--<section>-->
+                    <!--<h2>Painting a Pixel</h2>-->
+                    <!--<pre>-->
+                        <!--<code data-trim class="no-highlight">-->
+<!--function pp(x, y, brightness) {-->
+    <!--c.fillStyle = 'rgb(0,'+(brightness==-1?0:brightness)+',0)';-->
+    <!--c.fillRect(x*pixelSizeX, y*pixelSizeY, pixelSizeX, pixelSizeY);-->
+<!--}-->
+                        <!--</code>-->
+                    <!--</pre>-->
+				<!--</section>-->
 
                 <section>
-                    <h2>Marching a Ray</h2>
-                    <pre>
-                        <code data-trim class="no-highlight">
-brightness = -1;
-for (i=imin; i&lt;imax; i+=stepsize) {
-    p = (…) // calculate p.x, p.y, p.z
-    fz = f(p.x,p.y); // get terrain height at (p.x, p.y)
-    if (fz &gt; p.z) {
-        brightness = fz*250|0;
-        break;
-    }
-}
-// paint pixel at (x,y);
-                        </code>
-                    </pre>
-				</section>
-
-                <section>
-                    <h2>Painting a Pixel</h2>
-                    <pre>
-                        <code data-trim class="no-highlight">
-function pp(x, y, brightness) {
-    c.fillStyle = 'rgb(0,'+(brightness==-1?0:brightness)+',0)';
-    c.fillRect(x*pixelSizeX, y*pixelSizeY, pixelSizeX, pixelSizeY);
-}
-                        </code>
-                    </pre>
-				</section>
-
-                <section>
-                    <h2>Perlin Noise</h2>
+                    <h2>?? Perlin Noise</h2>
                     <img src="img/terrain-perlin-iq.jpg" width="70%"/>
                     <p>Image: <a href="http://www.iquilezles.org/">iñigo quilez (iq)</a></p>
 				</section>
 
                 <section>
-                    <h2>Distance Field</h2>
+                    <h1>Distance Fields</h1>
+				</section>
+
+                <section>
                     <img src="img/js1k14.png"/>
 				</section>
 
                 <section>
-                    <h2>Ray Marching a Distance Field</h2>
-                    <img src="img/raymarcher-dfe.svg"/>
+                    <h2>Ray Marching a Distance Estimator</h2>
+                    <img src="img/raymarcher-dfe2.svg"/>
 				</section>
 
                 <section>
@@ -268,23 +295,14 @@ function pp(x, y, brightness) {
 				</section>
 
                 <section>
-                    <h2>Ray Marching a Distance Field</h2>
-                    <img src="img/raymarcher-dfe.svg"/>
+                    <h2>Ray Marching a Distance Estimator</h2>
+                    <img src="img/raymarcher-dfe2.svg"/>
 				</section>
 
                 <section>
-                    <h2>?? Abort Condition</h2>
-                    <h3>Terrain function: f(x,y) &lt; p.z</h3>
-                    <h3>DE: distance &lt; <em>ε</em></h3>
-				</section>
-
-                <section>
-                    <h2>Ray Marching</h2>
-                    <ul>
-                        <li class="fragment">Implementation is simple</li>
-                        <li class="fragment">Colors, lighting and shading can be added easily</li>
-                        <li class="fragment">Bonus: parallelizes easily</li>
-                    </ul>
+                    <h2>Distance Fields</h2>
+                    <h3>Modulo Operator</h3>
+                    <h3><code>%</code></h3>
 				</section>
 
                 <section>
@@ -295,14 +313,28 @@ function pp(x, y, brightness) {
 				</section>
 
                 <section>
-                    <h2>Packing and Optimizing</h2>
-                    <ul>
-                        <li class="fragment">Implement first, optimize after</li>
-                        <li class="fragment">Start compressing early</li>
-                        <li class="fragment">Use an automated tool to do the compression</li>
-                        <li class="fragment">Optimize compressed code by hand</li>
-                        <li class="fragment">Pro level: write optimized code directly</li>
-                    </ul>
+                    <h1>Size</h1>
+				</section>
+
+                <section>
+                    <h2>Implement First, Optimize Later</h2>
+				</section>
+
+                <section>
+                    <h2>Start Compressing Early</h2>
+				</section>
+
+                <section>
+                    <h2>Use Automation</h2>
+				</section>
+
+                <section>
+                    <h2>Optimize Compressed Code by Hand</h2>
+				</section>
+
+                <section>
+                    <h1>Pro level</h1>
+                    <h2>Write optimized code directly</h2>
 				</section>
 
                 <section>
@@ -317,9 +349,183 @@ function pp(x, y, brightness) {
 				</section>
 
                 <section>
+                    <h2>Source</h2>
+                    <h4><a href="examples/dfe/rotating.html" target="_blank">Run Demo</a></h4>
+                    <pre class="small">
+                        <code data-trim>
+// make jslint stop after the first error so we can do all sort of nasty tricks
+/*jslint passfail: true*/
+
+/** @define {boolean} */
+var DEBUG = true;
+/** @define {boolean} */
+var SOUND = false;
+/** @define {boolean} */
+var ROTATE = true;
+
+// declare global vars to enable shortening by google closure compiler
+var
+    numpixels=90,
+    w=a.width,
+    h=a.height,
+    pixelSizeX = w/numpixels|0,
+    pixelSizeY = h/numpixels|0,
+    vw=numpixels,
+    vh=numpixels,
+    M=Math,
+    PI = M.PI,
+    TPI = 2*PI,
+    fps,
+    t=0,
+    beat=0,
+    beatsync=0,
+    theta=0,
+    st,
+    run=1,
+    mr=M.random,
+    ms=M.sin,
+    mc=M.cos,
+    mp=M.pow,
+    me=M.exp,
+    mm=M.min,
+    mM=M.max,
+    msq=M.sqrt,
+    ma=M.abs,
+    hue=1,
+    light=100,
+    theta=0,
+    o={}
+    ;
+
+o.x=o.y=o.z=60;
+
+
+if (DEBUG) {
+    st = new Date().getTime();
+    fps=0;
+}
+
+function pp(x, y, v) {
+    c.fillStyle = 'hsla('+[hue,v*80+'%',v*light+'%',1];
+    c.fillRect(x*pixelSizeX, y*pixelSizeY, pixelSizeX, pixelSizeY);
+}
+
+function mod_xz(v, m) {
+    return {
+        x: v.x%m-m/2,
+        y: v.y%m-m/2,
+        z: v.z%m-m/2
+    };
+}
+
+function DE_sphere(p, r) {
+    return mM(0,msq(p.x*p.x+p.y*p.y+p.z*p.z)-r);
+}
+
+function DE_box(p, r) {
+    p = {
+        x:mM(ma(p.x)-r,0),
+        y:mM(ma(p.y)-r,0),
+        z:mM(ma(p.z)-r,0)
+    };
+    return msq(p.x*p.x+p.y*p.y+p.z*p.z);
+}
+
+function DE_displaced_sphere(p, r) {
+    var d1,d2;
+    d1 = DE_sphere(p, r);
+    d2 = ms(1.5*p.x)*ms(1.5*p.y);
+    return d1+d2;
+}
+
+function rotate_Y(p, t) {
+    return {
+        x: p.x*mc(t)-p.z*ms(t),
+        y: p.y,
+        z: p.x*ms(t)+p.z*mc(t)
+    };
+}
+
+function rotate_Z(p, t) {
+    return {
+        x: p.x*mc(t)-p.y*ms(t),
+        y: p.x*ms(t)+p.y*mc(t),
+        z: p.z
+    };
+}
+
+function translate(p, x, y, z) {
+    return {
+        x: p.x+x,
+        y: p.y+y,
+        z: p.z+z
+    };
+}
+
+var render = function() {
+    var f=1,imax=20;
+    var x,y,d,b,distance,dd,p,i,walk=1/20;
+
+    o.z+=beatsync&lt;16?walk:0;
+    o.x+=beatsync&lt;16?0:walk;
+    theta+=PI/60;
+
+    y=vh;while(y--) {
+        x=vw;while(x--) {
+            d={x:x/vw-0.5,y:y/vh-0.5};
+
+            distance = 0;
+            for (i=0; i&lt;imax; i++) {
+                p = {
+                    x:o.x+distance*d.x,
+                    y:o.y+distance*d.y,
+                    z:o.z+distance
+                };
+                if (ROTATE) {
+                    p=translate(p,-o.x,-o.y,-o.z);
+                    p=rotate_Z(p,theta);
+                    p=rotate_Y(p,theta/3);
+                    p=translate(p,o.x,o.y,o.z);
+                }
+
+                //dd = DE_box(mod_xz(p,1), 0.2);
+
+                dd = DE_sphere(mod_xz(p,1), 0.2);
+                //dd = DE_sphere(p,1);
+                distance+=dd;
+                if (dd &lt; 5e-4) break;
+            }
+            b=(1-i/imax);
+
+            pp(x,vh-y,b);
+        }
+    }
+}
+
+function loop() {
+    t++;
+    requestAnimationFrame(loop);
+
+    if (DEBUG) {
+        if (run==1) {
+            render();
+        }
+    } else {
+        render();
+    }
+};
+loop();
+                        </code>
+                    </pre>
+				</section>
+
+                <section>
                     <h2>635 bytes</h2>
-                    <h4><a href="examples/dfe/rotating.html" target="_blank">View Result</a></h4>
-                    <pre class="small">var g=a.width/90|0,h=a.height/90|0,k=Math,l=k.PI,n=0,p=0,q=k.sin,v=k.cos,w=k.max,x=k.sqrt,p=0,y,z,A=y=z=60; function B(){n++;requestAnimationFrame(B);var m,r,s,t,f,b,d,u;z+=.05;A+=0;p+=l/60;for(t=90;t--;)for(s=90;s--;){m=s/90-.5;r=t/90-.5;for(u=f=0;20>u;u++){d={x:A+f*m,y:y+f*r,z:z+f};b=d={x:d.x+-A,y:d.y+-y,z:d.z+-z};var e=p;b=d={x:b.x*v(e)-b.y*q(e),y:b.x*q(e)+b.y*v(e),z:b.z};e=p/3;d={x:b.x*v(e)-b.z*q(e),y:b.y,z:b.x*q(e)+b.z*v(e)};d={x:d.x+A,y:d.y+y,z:d.z+z};b=d.x%1-.5;e=d.y%1-.5;d=d.z%1-.5;b=w(0,x(b*b+e*e+d*d)-.2);f+=b;if(5E-4>b)break}m=1-u/20;r=s;f=90-t;c.fillStyle="hsla("+[1,80*m+"%",100*m+"%",1];c.fillRect(r*g,f*h,g,h)}}B();</pre>
+                    <pre class="small">var g=a.width/90|0,h=a.height/90|0,k=Math,l=k.PI,n=0,p=0,q=k.sin,v=k.cos,w=k.max,x=k.sqrt,p=0,y,z,A=y=z=60; function B(){n++;requestAnimationFrame(B);var m,r,s,t,f,b,d,u;z+=.05;A+=0;p+=l/60;for(t=90;t--;)for(s=90;s--;){m=s/90-.5;r=t/90-.5;for(u=f=0;20&gt;u;u++){d={x:A+f*m,y:y+f*r,z:z+f};b=d={x:d.x+-A,y:d.y+-y,z:d.z+-z};var e=p;b=d={x:b.x*v(e)-b.y*q(e),y:b.x*q(e)+b.y*v(e),z:b.z};e=p/3;d={x:b.x*v(e)-b.z*q(e),y:b.y,z:b.x*q(e)+b.z*v(e)};d={x:d.x+A,y:d.y+y,z:d.z+z};b=d.x%1-.5;e=d.y%1-.5;d=d.z%1-.5;b=w(0,x(b*b+e*e+d*d)-.2);f+=b;if(5E-4&gt;b)break}m=1-u/20;r=s;f=90-t;c.fillStyle="hsla("+[1,80*m+"%",100*m+"%",1];c.fillRect(r*g,f*h,g,h)}}B();</pre>
+				</section>
+
+                <section>
+                    <h1>Optimizing for Size</h1>
 				</section>
 
                 <section>
@@ -336,7 +542,7 @@ function pp(x, y, brightness) {
                         <code data-trim class="no-highlight">
 if(w>PI){A=1}else A=-1;
 
-return w>PI?1:-1;
+A=w>PI?1:-1;
                         </code>
                     </pre>
 				</section>
@@ -347,8 +553,9 @@ return w>PI?1:-1;
                         <code data-trim class="no-highlight">
 m=Math;
 s=m.sin;
-c=m.cos;
 P=m.PI;
+
+A=m(P);
                         </code>
                     </pre>
 				</section>
@@ -360,6 +567,8 @@ P=m.PI;
 for (e in o) {
     o[e[0]+e[2]+(e[6]||'')] = o[e];
 }
+
+fillRect => flc
                         </code>
                     </pre>
 				</section>
@@ -379,16 +588,32 @@ for(x=width;x--;){paint(x)};
                     <h2>Comma Operator</h2>
                     <pre>
                         <code data-trim class="no-highlight">
-paint(x),x--;
+true,false,'js1k';
+                        </code>
+
+                        <code data-trim class="fragment no-highlight">
+=> 'js1k'
                         </code>
                     </pre>
 				</section>
 
                 <section>
-                    <h2>Abusing Loop Condition</h2>
+                    <h2>Comma Operator</h2>
                     <pre>
                         <code data-trim class="no-highlight">
-for(x=width;x--;){paint(x)};
+x=10;
+true,false,x--
+
+=> 9
+                        </code>
+                    </pre>
+				</section>
+
+                <section>
+                    <h2>Abusing the Loop Condition</h2>
+                    <pre>
+                        <code data-trim class="no-highlight">
+for(x=width;x--;){paint(x);};
 
 for(x=width;paint(x),x--;);
                         </code>
@@ -396,31 +621,25 @@ for(x=width;paint(x),x--;);
 				</section>
 
                 <section>
-                    <h2>Casting Array to String</h2>
-                    <pre>
+                    <h2>Converting to Integer</h2>
+                    <pre class="small">
                         <code data-trim class="no-highlight">
-'hsla('+h+','+s+'%'+','+l+'%'+','1)';
+f=4.8;
 
-'hsla('+[h,s+'%',l+'%',1];
+Math.floor(f);
+=> 4
 
-=> 'hsla(160,80%,80%,1'
+~~f;
+=> 4
+
+f|0;
+=> 4
                         </code>
                     </pre>
 				</section>
 
                 <section>
-                    <h2>Converting to Integer</h2>
-                    <pre>
-                        <code data-trim class="no-highlight">
-f=4.8;
-
-~~f;
-  => 4
-
-f|0;
-  => 4
-                        </code>
-                    </pre>
+                    <h1>Crushing and Packing</h1>
 				</section>
 
                 <section>
