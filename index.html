@@ -248,7 +248,7 @@
 				<!--</section>-->
 
                 <section>
-                    <h2>?? Perlin Noise</h2>
+                    <h2>Perlin Noise</h2>
                     <img src="img/terrain-perlin-iq.jpg" width="70%"/>
                     <p>Image: <a href="http://www.iquilezles.org/">iñigo quilez (iq)</a></p>
 				</section>
@@ -286,12 +286,12 @@
 
                 <section>
                     <h2>DE in ℝ<sup>2</sup> (Circle)</h2>
-                    <h3>d = Math.sqrt(x*x + y*y) - r;</h3>
+                    <h3>d = Math.sqrt(x∙x + y∙y) - r;</h3>
 				</section>
 
                 <section>
                     <h2>DE in ℝ<sup>3</sup> (Sphere)</h2>
-                    <h3>d = Math.sqrt(x*x + y*y + z*z) - r;</h3>
+                    <h3>d = Math.sqrt(x∙x + y∙y + z∙z) - r;</h3>
 				</section>
 
                 <section>
@@ -300,9 +300,8 @@
 				</section>
 
                 <section>
-                    <h2>Distance Fields</h2>
-                    <h3>Modulo Operator</h3>
-                    <h3><code>%</code></h3>
+                    <h1>Field?</h1>
+                    <h2 class="fragment">Modulo Operator %</h2>
 				</section>
 
                 <section>
@@ -358,8 +357,6 @@
 
 /** @define {boolean} */
 var DEBUG = true;
-/** @define {boolean} */
-var SOUND = false;
 /** @define {boolean} */
 var ROTATE = true;
 
@@ -539,7 +536,7 @@ loop();
                 <section>
                     <h2>Conditional Operator</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 if(w>PI){A=1}else A=-1;
 
 A=w>PI?1:-1;
@@ -550,7 +547,7 @@ A=w>PI?1:-1;
                 <section>
                     <h2>Alias Reused Functions And Constants</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 m=Math;
 s=m.sin;
 P=m.PI;
@@ -563,7 +560,7 @@ A=m(P);
                 <section>
                     <h2>Property Hashing</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 for (e in o) {
     o[e[0]+e[2]+(e[6]||'')] = o[e];
 }
@@ -576,7 +573,7 @@ fillRect => flc
                 <section>
                     <h2>Decrementing loops</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 for(x=0;x<=width;x++){paint(x)};
 
 for(x=width;x--;){paint(x)};
@@ -587,11 +584,11 @@ for(x=width;x--;){paint(x)};
                 <section>
                     <h2>Comma Operator</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 true,false,'js1k';
                         </code>
 
-                        <code data-trim class="fragment no-highlight">
+                        <code data-trim class="fragment no-highlight huge">
 => 'js1k'
                         </code>
                     </pre>
@@ -600,9 +597,9 @@ true,false,'js1k';
                 <section>
                     <h2>Comma Operator</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 x=10;
-true,false,x--
+true,false,x--;
 
 => 9
                         </code>
@@ -612,7 +609,7 @@ true,false,x--
                 <section>
                     <h2>Abusing the Loop Condition</h2>
                     <pre>
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 for(x=width;x--;){paint(x);};
 
 for(x=width;paint(x),x--;);
@@ -623,7 +620,7 @@ for(x=width;paint(x),x--;);
                 <section>
                     <h2>Converting to Integer</h2>
                     <pre class="small">
-                        <code data-trim class="no-highlight">
+                        <code data-trim class="no-highlight huge">
 f=4.8;
 
 Math.floor(f);

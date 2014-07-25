@@ -189,5 +189,8 @@ body {
   font-size: 0.6em;
   line-height: 1.6; }
 
+.reveal code.huge {
+  font-size: 170%; }
+
 .reveal q {
   quotes: '“' '”'; }

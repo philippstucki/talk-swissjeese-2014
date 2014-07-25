@@ -95,6 +95,10 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
     line-height: 1.6;
 }
 
+.reveal code.huge {
+    font-size: 170%;
+}
+
 .reveal q {
     quotes: '“' '”';
 }
